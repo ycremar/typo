@@ -1,0 +1,20 @@
+Feature: Create new category
+    As a blog administrator
+    In order to better manage the blogs
+    I want to add new category
+
+    Background:
+        Given the blog is set up
+	And I am logged into the admin panel
+
+    Scenario: Create category
+        Given I am on the new category page
+	When I fill in "category_name" with "Category_1"
+        And I fill in "category_permalink" with "link"
+        And I fill in "category_keywords" with "category_1"
+        And I fill in "category_description" with "a new category"
+        And I press "Save"
+        Then I should see "Category_1"
+        Then I should see "link"
+        Then I should see "category_1"
+        Then I should see "a new category"

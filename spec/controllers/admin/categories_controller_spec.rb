@@ -16,6 +16,28 @@ describe Admin::CategoriesController do
     assert_response :redirect, :action => 'index'
   end
 
+  describe "new" do
+
+    context "without category params" do
+      before(:each) do
+        get :new
+      end
+
+      it "should render template new and has a category object" do
+        assert_response :success
+        assert_template "new"
+        assert_not_nil assigns(:category)
+      end
+
+      it 'should render template new' do
+        assert_template 'new'
+        assert_tag :tag => "table",
+          :attributes => { :id => "category_container" }
+      end
+    end
+
+  end
+
   describe "test_edit" do
     before(:each) do
       get :edit, :id => Factory(:category).id
